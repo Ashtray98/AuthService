@@ -6,7 +6,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class CustomUserDetails extends UserInfo implements UserDetails
 {
@@ -19,6 +21,7 @@ public class CustomUserDetails extends UserInfo implements UserDetails
     {
         this.username=byUsername.getUsername();
         this.password=byUsername.getPassword();
+        List<GrantedAuthority> auths=new ArrayList<>();
 
         for(UserRole role : byUsername.getRoles())
         {
